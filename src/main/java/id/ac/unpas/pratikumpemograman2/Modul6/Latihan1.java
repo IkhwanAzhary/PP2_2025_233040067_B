@@ -1,48 +1,48 @@
 package id.ac.unpas.pratikumpemograman2.Modul6;
 
-import javax.swing.*;
-import java.awt.*;
-
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 /**
  *
  * @author ASUS
  */
 
 public class Latihan1{
-    public static void main(String[] args) {
-        // Frame utama
+        public static void main(String[] args) {
+        // 1. Buat frame utama
         JFrame frame = new JFrame("Kalkulator Sederhana");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 400);
-        frame.setLayout(new BorderLayout(10, 10));
+        frame.setLayout(new BorderLayout());
 
-        // Komponen layar (JTextField)
-        JTextField display = new JTextField();
-        display.setEditable(false);
-        display.setHorizontalAlignment(JTextField.RIGHT);
-        display.setFont(new Font("Arial", Font.BOLD, 24));
-        frame.add(display, BorderLayout.NORTH);
+        // 2. Tambahkan layar di bagian atas (NORTH)
+        JTextField layar = new JTextField();
+        frame.add(layar, BorderLayout.NORTH);
 
-        // Panel untuk tombol-tombol
+        // 3. Panel tombol dengan GridLayout (4x4)
         JPanel panelTombol = new JPanel();
         panelTombol.setLayout(new GridLayout(4, 4, 5, 5));
 
-        // Daftar tombol kalkulator
+         // 4. Tambahkan tombol-tombol (0-9 dan operator)
         String[] tombol = {
             "7", "8", "9", "/",
             "4", "5", "6", "*",
             "1", "2", "3", "-",
-            "0", ".", "=", "+"
+            "0", "C", "=", "+"
         };
 
-        // Tambahkan tombol ke panel
         for (String text : tombol) {
-            JButton btn = new JButton(text);
-            btn.setFont(new Font("Arial", Font.PLAIN, 18));
-            panelTombol.add(btn);
+            panelTombol.add(new JButton(text));
         }
 
+         // 5. Tambahkan panel tombol ke frame (CENTER)
         frame.add(panelTombol, BorderLayout.CENTER);
+
+        // 6. Tampilkan frame
         frame.setVisible(true);
     }
 }

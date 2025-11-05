@@ -10,41 +10,45 @@ import java.awt.event.*;
  */
 public class Latihan2 {
     public static void main(String[] args) {
-        // Frame utama
+        // 1. Buat frame utama
         JFrame frame = new JFrame("Konverter Suhu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 150);
         frame.setLayout(new FlowLayout());
 
-        // Komponen GUI
-        JLabel lblCelcius = new JLabel("Celcius:");
-        JTextField txtCelcius = new JTextField(10);
-        JButton btnKonversi = new JButton("Konversi");
-        JLabel lblFahrenheit = new JLabel("Fahrenheit:");
-        JLabel lblHasil = new JLabel("-");
+        // 2. Buat komponen
+        JLabel labelCelcius = new JLabel("Celcius:");
+        JTextField textCelcius = new JTextField(10);
+        JButton buttonKonversi = new JButton("Konversi");
+        JLabel labelFahrenheit = new JLabel("Fahrenheit:");
+        JLabel labelHasil = new JLabel(""); // Label kosong untuk hasil
+ // 3. Tambahkan komponen ke frame
+        frame.add(labelCelcius);
+        frame.add(textCelcius);
+        frame.add(buttonKonversi);
+        frame.add(labelFahrenheit);
+        frame.add(labelHasil);
 
-        // Tambahkan komponen ke frame
-        frame.add(lblCelcius);
-        frame.add(txtCelcius);
-        frame.add(btnKonversi);
-        frame.add(lblFahrenheit);
-        frame.add(lblHasil);
-
-        // Tambahkan event listener ke tombol
-        btnKonversi.addActionListener(new ActionListener() {
+        // 4. Tambahkan event listener pada tombol
+        buttonKonversi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    double celcius = Double.parseDouble(txtCelcius.getText());
+                    // Ambil nilai dari JTextField
+                    double celcius = Double.parseDouble(textCelcius.getText());
+                    
+                    // Konversi Celcius ke Fahrenheit
                     double fahrenheit = (celcius * 9 / 5) + 32;
-                    lblHasil.setText(String.format("%.2f °F", fahrenheit));
+                // Tampilkan hasil
+                    labelHasil.setText(String.format("%.2f", fahrenheit));
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(frame, "Masukkan angka yang valid!",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                    // Jika input bukan angka
+                    labelHasil.setText("Input tidak valid!");
                 }
             }
         });
 
+        // 5. Tampilkan frame
         frame.setVisible(true);
     }
 }
