@@ -40,7 +40,7 @@ public class Latihan2 {
                     // Konversi Celcius ke Fahrenheit
                     double fahrenheit = (celcius * 9 / 5) + 32;
                 // Tampilkan hasil
-                    labelHasil.setText(String.format("%.2f", fahrenheit));
+                    labelHasil.setText(String.format("%.2f °F", fahrenheit));
                 } catch (NumberFormatException ex) {
                     // Jika input bukan angka
                     labelHasil.setText("Input tidak valid!");
